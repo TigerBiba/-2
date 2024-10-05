@@ -33,11 +33,14 @@ namespace Практическая_2
 
         private void btnOtvet_Click(object sender, RoutedEventArgs e)
         {
-            string inputText = tbText.Text;
+            string text = tbText.Text;
 
-            string processedText = string.Join(" ", inputText.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries));
+            string[] words = text.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
-            tblOtvet.Text = processedText;
+            string words2 = string.Join(" ", words);
+            
+
+            tblOtvet.Text = words2;
         }
     }
 }

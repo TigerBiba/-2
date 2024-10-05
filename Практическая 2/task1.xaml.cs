@@ -35,29 +35,21 @@ namespace Практическая_2
         {
             string input = tbNumber.Text;
 
-            if (input.Length != 6 || !int.TryParse(input, out int number))
+            if (input.Length != 6)
             {
                 MessageBox.Show("Некорректный ввод. Введите шестизначное число.");
                 return;
             }
 
-            int firstDigit = int.Parse(input[0].ToString());
-            int secondDigit = int.Parse(input[1].ToString());
-            int thirdDigit = int.Parse(input[2].ToString());
-            int fourthDigit = int.Parse(input[3].ToString());
-            int fifthDigit = int.Parse(input[4].ToString());
-            int sixthDigit = int.Parse(input[5].ToString());
+            char[] arr = input.ToCharArray();
 
-            int sumFirstThree = firstDigit + secondDigit + thirdDigit;
-            int sumLastThree = fourthDigit + fifthDigit + sixthDigit;
-
-            if (sumFirstThree == sumLastThree)
-            {
-                tbnEnter.Text = "Сумма первых трех цифр равна сумме последних трех цифр.";
-            }
+            if (arr[0] + arr[1] + arr[2] == arr[3] + arr[4] + arr[5]) 
+            { 
+            tbnEnter.Text = "Первые три числа равны последним трём числам";
+            } 
             else
             {
-                tbnEnter.Text = "Сумма первых трех цифр не равна сумме последних трех цифр.";
+            tbnEnter.Text = "Первые три числа не равны последним трём числам";
             }
         }
     }

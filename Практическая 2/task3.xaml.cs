@@ -33,40 +33,28 @@ namespace Практическая_2
 
         private void btnEnter_Click(object sender, RoutedEventArgs e)
         {
-            int[] array = GetArrayFromInput();
+            string arr = tbNumber.Text;
+            string[] arrNumber = arr.Split(new char[] {' '}, StringSplitOptions.RemoveEmptyEntries);
 
-            List<int> seriesLengths = CalculateSeriesLengths(array);
+            List<int> seriesLenght = new List<int>();
 
-            string result = string.Join(" ", seriesLengths);
-            tblOtvet.Text = $"Длины серий: {result}";
-        }
-        private int[] GetArrayFromInput()
-        {
-            string inputString = tbNumber.Text.Trim();
-
-            return inputString.Split(' ').Select(int.Parse).ToArray();
-        }
-        private List<int> CalculateSeriesLengths(int[] array)
-        {
-            List<int> seriesLengths = new List<int>();
-            if (array.Length > 0)
+            int dup = 1;
+            for(int i = 1;  i < arrNumber.Length; i++) 
             {
-                int currentLength = 1;
-                for (int i = 1; i < array.Length; i++)
+                if (arrNumber[i - 1] == arrNumber[i])
                 {
-                    if (array[i] == array[i - 1])
-                    {
-                        currentLength++;
-                    }
-                    else
-                    {
-                        seriesLengths.Add(currentLength);
-                        currentLength = 1;
-                    }
+                    dup++;
                 }
-                seriesLengths.Add(currentLength);
+                else 
+                {
+                    seriesLenght.Add(dup);
+                    dup = 1;
+                }
             }
-            return seriesLengths;
+            seriesLenght.Add(dup);
+
+            tblOtvet.Text = "Длины серий: " + string.Join(" ", seriesLenght);
+            
         }
     }
 }

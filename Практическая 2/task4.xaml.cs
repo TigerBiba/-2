@@ -40,10 +40,9 @@ namespace Практическая_2
 
             SwapElements(array, maxNegativeIndex, minPositiveIndex);
 
-            string result = $"Первый элемент равен {array[maxNegativeIndex]}, на позиции {maxNegativeIndex + 1}, " +
-                           $"второй элемент равен {array[minPositiveIndex]}, на позиции {minPositiveIndex + 1}.";
-            tblOtvet.Text = $"Результат перестановки: {string.Join(" ", array)}";
-            tblOtvet.Text += "\n" + result;
+            string result = ($"Первый элемент равен {array[maxNegativeIndex]}, на позиции {maxNegativeIndex}, " + $"второй элемент равен {array[minPositiveIndex]}, на позиции {minPositiveIndex}.");
+
+            tblOtvet.Text = $"Результат перестановки: {string.Join(" ", array) +  "\n" + result}";
         }
         private int[] GetArrayFromInput()
         {
@@ -61,7 +60,7 @@ namespace Практическая_2
                 if (array[i] < 0 && Math.Abs(array[i]) > Math.Abs(maxNegative))
                 {
                     maxNegative = array[i];
-                    maxNegative = i;
+                    maxNegativeIndex = i;
                 }
             }
             return maxNegativeIndex;
@@ -84,12 +83,9 @@ namespace Практическая_2
 
         private void SwapElements(int[] array, int index1, int index2)
         {
-            if (index1 != -1 && index2 != -1)
-            {
                 int temp = array[index1];
                 array[index1] = array[index2];
                 array[index2] = temp;
-            }
         }
     }
 }
